@@ -90,6 +90,16 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HostFile\HostFile.csproj">
+      <Project>{05092ac2-1be8-44df-a549-d1db45bdf9fa}</Project>
+      <Name>HostFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HostLists\HostLists.csproj">
+      <Project>{1e682572-cacc-4202-9b76-55099efa5735}</Project>
+      <Name>HostLists</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
