@@ -13,7 +13,9 @@ Well, I got fed up of it too, so I wrote this, and now I'm letting you have it i
 It has 3 main functions.
 
 1) It allows you to keep different collections of host lists and quickly switch between them
+
 2) It allows you to edit said lists and add/remove entries from them
+
 3) It allows you to import/export your lists to/from others so you can share lists of IP's to block easily
 
 More to come (possibly) as the app develops, a big thanks to Gavin Lanata for the UI work :-)
