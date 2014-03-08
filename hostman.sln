@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{A91E86A3-2735-47AD-93E6-D1741B1F721C}"
+	ProjectSection(SolutionItems) = preProject
+		Design Notes.txt = Design Notes.txt
+		UI Ideas.uisketch = UI Ideas.uisketch
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostmanUI", "HostmanUI\HostmanUI.csproj", "{0078AE6A-EF79-46E5-9252-45BC4794E1C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostFile", "HostFile\HostFile.csproj", "{05092AC2-1BE8-44DF-A549-D1DB45BDF9FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostLists", "HostLists\HostLists.csproj", "{1E682572-CACC-4202-9B76-55099EFA5735}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0078AE6A-EF79-46E5-9252-45BC4794E1C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0078AE6A-EF79-46E5-9252-45BC4794E1C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0078AE6A-EF79-46E5-9252-45BC4794E1C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0078AE6A-EF79-46E5-9252-45BC4794E1C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05092AC2-1BE8-44DF-A549-D1DB45BDF9FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05092AC2-1BE8-44DF-A549-D1DB45BDF9FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05092AC2-1BE8-44DF-A549-D1DB45BDF9FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05092AC2-1BE8-44DF-A549-D1DB45BDF9FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E682572-CACC-4202-9B76-55099EFA5735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E682572-CACC-4202-9B76-55099EFA5735}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E682572-CACC-4202-9B76-55099EFA5735}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E682572-CACC-4202-9B76-55099EFA5735}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

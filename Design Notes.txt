@@ -1,0 +1,74 @@
+Initial Notes for Design & Architecture
+---------------------------------------
+
+UI Needs three things initially that I can think of.
+
+1) A Grid view to manage the active selected hosts list (Note: I dont use the term file here beacuse hosts lists will be held internally in the app), this grid
+  could also be the same one used to edit non selected lists
+
+2) A quick list of saved hosts, either as a radio list or series of buttons.  On clicking on one of these entries the active list should be turned into a regular
+  text file, and then saved in the appropriate place in the OS
+
+3) There should be some measure of ability to import/export hosts files, I envisage that the app will work out the correct OS based location itself, but there
+  does need to be an ability for users to load/save hosts files and database backups of those files to/from thier own 'My Documents' and other locations of thier
+  choosing.  I envisage that, load/save be done with a regular load/save file experience, but there should also be an init button of some description (see below)
+
+The grid editor for a host list, should allow addition, removal and editing of entries in it, and should also have an active switch so that the end user can 'Activate'
+or 'Deactivate' single entries in a profile on a piece meal basis. EG: to allow one request through without needing to swap an entire profile.
+
+Some ideas for UI have been added to this project, they where created using redgates free UI sketch tool available from : http://help.red-gate.com/help/UISketch/
+
+
+General Architecture
+--------------------
+There should be 3 distinct parts to the app as follows
+
+1) The WPF Based UI
+2) A detached 'Hosts File' engine.
+3) A detached 'Hosts Lists' data store.
+
+The WPF UI, should NOT have any logic in it, other than whats needed to display, this should be based around a simple MVVM pattern using something like 'Fody'
+and to automate and ease the pain of setting up 'INotifyProperty' based bindings (Search for Fody in NuGet or see : https://github.com/Fody/Fody ), I dont
+think the UI needs any big massize UI kit to handle dynamic views or anything, but I am willing to be proved wrong.  If using an industrial approach like Prisim
+or Catel or <insert other fave MVVM kit here> then so be it, my gut feeling here however is that something lightweight like fody will be just fine here.
+
+The 2 'Detached' modules, Shall be build at class libraries, which are then consumed by the WPF UI, this helps in two ways.  First it keeps the UI clean and
+free from junk.  Secondly it means that if we want to make this useable from a web app, then we can, the seperation will allow to re-engineer the UI without
+touching the main code.  The UI will in turn just make public calls to the two class libs via a public/static interface.
+
+
+The Hosts File Engine
+---------------------
+This module should be responsible for managing the physical files on disk used by the OS.  Initially it should be able to perform the following functions:
+
+1) Replace/Overwrite any host file already in place
+2) Delete any hosts files already present
+3) Read into memory and parse any host file already on disk
+4) Elevate itself to admin privliges mode where required to access OS folders
+
+This is the only part of the application that's likley to need to elivate itself, however some research needs to be made as to the best way to achieve this
+elavation via a main EXE (EG: the UI app) is easy, but need to find out the best approach to do this from a DLL only.
+
+
+The Hosts List Data Store
+-------------------------
+This module will essentially be a class library that uses SQLite to store/manage host lists.  Initially this should be able to perform the following functions:
+
+1) Full CRUD (Create, Retrieve, Update, Delete) operations on a SQL table based host's list
+2) Full CRUD operations on a list of 'Profiles' stored within the datastore, this list will define segmentation in the master hosts list table, essentially allowing
+  multiple 'Profile based' lists in one table.
+
+Initial table schema, is envisaged to look something like:
+
+[Profiles]
+Integer   Record ID
+String    Profile Name
+Date      Date Profile Created
+String    Profile Description
+
+[HostsList]
+Integer   Record ID
+String    IP Address
+String    Mapped Domain Name
+Integer   Profile ID
+Boolean   ActiveFlag
