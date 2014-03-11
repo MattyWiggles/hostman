@@ -80,39 +80,26 @@
                         		</VisualState>
                         		<VisualState x:Name="MouseOver">
                                     
-                        			<Storyboard RepeatBehavior="Forever">
+                        			<Storyboard>
                         				<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="iconRect">
                         					<EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="1"/>
-                        					<EasingDoubleKeyFrame KeyTime="0:0:2.75" Value="1"/>
-                        					<EasingDoubleKeyFrame KeyTime="0:0:3" Value="0"/>
-                        				</DoubleAnimationUsingKeyFrames>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:2.75" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="iconRect">
                                             <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="95">
                                                 <EasingDoubleKeyFrame.EasingFunction>
                                                     <CubicEase EasingMode="EaseOut"/>
                                                 </EasingDoubleKeyFrame.EasingFunction>
                                             </EasingDoubleKeyFrame>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:2" Value="95"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:3" Value="5">
-                                                <EasingDoubleKeyFrame.EasingFunction>
-                                                    <CubicEase EasingMode="EaseIn"/>
-                                                </EasingDoubleKeyFrame.EasingFunction>
-                                            </EasingDoubleKeyFrame>
                                         </DoubleAnimationUsingKeyFrames>
                         				<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="rectangle">
                         					<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                        					<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="95">
-                        						<EasingDoubleKeyFrame.EasingFunction>
-                        							<CubicEase EasingMode="EaseOut"/>
-                        						</EasingDoubleKeyFrame.EasingFunction>
-                        					</EasingDoubleKeyFrame>
-                        					<EasingDoubleKeyFrame KeyTime="0:0:2" Value="95"/>
-                                            <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="95">
                                                 <EasingDoubleKeyFrame.EasingFunction>
-                                                    <CubicEase EasingMode="EaseIn"/>
+                                                    <CubicEase EasingMode="EaseOut"/>
                                                 </EasingDoubleKeyFrame.EasingFunction>
                                             </EasingDoubleKeyFrame>
-                        				</DoubleAnimationUsingKeyFrames>
+                                        </DoubleAnimationUsingKeyFrames>
                         			</Storyboard>
                                     
                         		</VisualState>
@@ -161,6 +148,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     
     <Style TargetType="ComboBox" x:Key="StandardComboBoxStyle">

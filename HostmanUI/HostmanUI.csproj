@@ -60,7 +60,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="ProfileEditWindow.xaml.cs">
+      <DependentUpon>ProfileEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Support\Command.cs" />
     <Compile Include="ViewModels\MainWinControllerViewModel.cs" />
+    <Compile Include="ViewModels\ProfileEditWinControllerViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +78,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ProfileEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\ColourPalett.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -82,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\MainWinImplicitDataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ProfileEditWinimplicitDataTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
