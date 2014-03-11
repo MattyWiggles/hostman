@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DrawingBrush x:Key="EditIcon" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource SoftBlack}" Geometry="F1 M 12,12L 12,13L 13,13L 12,12 Z "/>
+                    <GeometryDrawing Brush="{StaticResource SoftBlack}" Geometry="F1 M 12,11L 14,13L 15,13L 12,10L 12,11 Z "/>
+                    <GeometryDrawing Brush="{StaticResource SoftBlack}" Geometry="F1 M 15,7L 18,10L 23,5L 20,2L 15,7 Z "/>
+                    <GeometryDrawing Brush="{StaticResource SoftBlack}" Geometry="F1 M 13,9L 16,12L 17,11L 14,8L 13,9 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+</ResourceDictionary>
