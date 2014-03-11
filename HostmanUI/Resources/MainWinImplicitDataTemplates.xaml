@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Entites="clr-namespace:HostLists.Entities;assembly=HostLists">
+    
+    <DataTemplate DataType="{x:Type Entites:Profile}">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding ProfileName}" Style="{StaticResource SubHeadingTextBlockStyle}"/>
+        </StackPanel>
+    </DataTemplate>
+    
+</ResourceDictionary>

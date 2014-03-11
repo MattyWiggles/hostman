@@ -1,8 +1,36 @@
 ﻿<Window x:Class="HostmanUI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        xmlns:localConverters="clr-namespace:HostmanUI.Converters"
+        Title="HostMan" Height="175" Width="300"
+        WindowStyle="SingleBorderWindow"
+        DataContext="{Binding MWViewModel, RelativeSource={RelativeSource Mode=Self}}">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/MainWinImplicitDataTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <localConverters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+            
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <Border BorderBrush="{StaticResource SoftBlack}"
+            BorderThickness="8">
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="6">
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" 
+                       Text="Current Profiles"/>
+            <ComboBox Style="{StaticResource StandardComboBoxStyle}" ItemsSource="{Binding Profiles}"
+                      SelectedValue="{Binding SelectedProfile, Mode=TwoWay}"></ComboBox>
+
+            <Button Style="{StaticResource EditButtonStyle}" 
+                    Visibility="{Binding SelectedProfile, Converter={StaticResource NullToVisibilityConverter}}" 
+                    HorizontalAlignment="Right" 
+                    Margin="0,10,0,0"/>
+        </StackPanel>
         
-    </Grid>
+    </Border>
+
 </Window>

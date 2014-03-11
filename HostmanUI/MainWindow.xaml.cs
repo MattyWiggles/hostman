@@ -11,17 +11,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PropertyChanged;
+using HostmanUI.ViewModels;
 
 namespace HostmanUI
 {
   /// <summary>
   /// Interaction logic for MainWindow.xaml
   /// </summary>
+  [ImplementPropertyChanged]
   public partial class MainWindow : Window
   {
     public MainWindow()
     {
       InitializeComponent();
+      MWViewModel = new MainWinControllerViewModel();
     }
+
+    public MainWinControllerViewModel MWViewModel { get; private set; }
+
   }
 }

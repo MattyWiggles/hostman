@@ -3,6 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- The order in which this appear is important -->
+                <ResourceDictionary Source="Resources/ColourPalett.xaml"/>
+                <ResourceDictionary Source="Resources/VectorImages.xaml"/>
+                <ResourceDictionary Source="Resources/ControlStylesandTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
