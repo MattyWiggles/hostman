@@ -14,7 +14,8 @@ namespace HostmanUI.ViewModels
 
         public MainWinControllerViewModel()
         {
-            _EditSelectedProfile = new Command(c => EditSelectedProfileExecuted(), c => (SelectedProfile == null) ? false : true);
+            _EditSelectedProfileCommand = new Command(e => EditSelectedProfileExecuted(), e => (SelectedProfile == null) ? false : true);
+            _AddNewProfileCommand = new Command(e => AddNewProfileExecuted());
         }
 
         public List<Profile> Profiles
@@ -26,10 +27,10 @@ namespace HostmanUI.ViewModels
 
         #region Commands
 
-        Command _EditSelectedProfile;
-        public Command EditSelectedProfile
+        Command _EditSelectedProfileCommand;
+        public Command EditSelectedProfileCommand
         {
-            get { return _EditSelectedProfile; }
+            get { return _EditSelectedProfileCommand; }
         }
 
         ProfileEditWindow newProfileWindow;
@@ -43,6 +44,20 @@ namespace HostmanUI.ViewModels
             newProfileWindow = new ProfileEditWindow(SelectedProfile.RecordId);
 
             newProfileWindow.Show();
+
+        }
+
+        Command _AddNewProfileCommand;
+        public Command AddNewProfileCommand
+        {
+            get { return _AddNewProfileCommand; }
+        }
+
+
+        void AddNewProfileExecuted()
+        {
+            //Create the new profile and if success, open the profile in a new window to edit
+            
 
         }
 

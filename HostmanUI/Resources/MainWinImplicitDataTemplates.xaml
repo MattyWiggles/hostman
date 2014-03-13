@@ -4,7 +4,7 @@
     
     <DataTemplate DataType="{x:Type Entites:Profile}">
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="{Binding ProfileName}" Style="{StaticResource SubHeadingTextBlockStyle}"/>
+            <TextBlock Text="{Binding ProfileName}" Style="{StaticResource SubHeadingDarkTextBlockStyle}"/>
         </StackPanel>
     </DataTemplate>
     
