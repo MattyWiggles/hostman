@@ -41,7 +41,7 @@ namespace HostmanUI.ViewModels
             if (newProfileWindow != null)
                 newProfileWindow.Close();
 
-            newProfileWindow = new ProfileEditWindow(SelectedProfile.RecordId);
+            newProfileWindow = new ProfileEditWindow(SelectedProfile);
 
             newProfileWindow.Show();
 

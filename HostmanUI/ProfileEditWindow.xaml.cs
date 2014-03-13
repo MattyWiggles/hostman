@@ -1,4 +1,5 @@
-﻿using HostmanUI.ViewModels;
+﻿using HostLists.Entities;
+using HostmanUI.ViewModels;
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
@@ -21,11 +22,11 @@ namespace HostmanUI
     [ImplementPropertyChanged]
     public partial class ProfileEditWindow : Window
     {
-        public ProfileEditWindow(int ProfileID)
+        public ProfileEditWindow(Profile profile)
         {
             InitializeComponent();
 
-            PEditViewModel = new ProfileEditWinControllerViewModel(ProfileID);
+            PEditViewModel = new ProfileEditWinControllerViewModel(profile);
         }
 
         public ProfileEditWinControllerViewModel PEditViewModel { get; private set; }

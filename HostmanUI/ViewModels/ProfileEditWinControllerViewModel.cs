@@ -11,16 +11,17 @@ namespace HostmanUI.ViewModels
     [ImplementPropertyChanged]
     public class ProfileEditWinControllerViewModel
     {
-        int _ProfileID;
 
-        public ProfileEditWinControllerViewModel(int ProfileID)
+        public Profile Profile { get; private set; }
+
+        public ProfileEditWinControllerViewModel(Profile profile)
         {
-            this._ProfileID = ProfileID;
+            this.Profile = profile;
         }
 
         public List<HostEntry> ProfileHostList 
         { 
-            get { return HostLists.HostLists.GetHostListForProfileId(_ProfileID); } 
+            get { return HostLists.HostLists.GetHostListForProfileId(Profile.RecordId); } 
         }
     }
 }

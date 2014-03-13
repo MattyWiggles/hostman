@@ -17,13 +17,35 @@
         
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" MinHeight="75"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-        <ListBox ItemsSource="{Binding ProfileHostList, UpdateSourceTrigger=PropertyChanged}"
-                 Style="{StaticResource EditHostListBoxStyle}" Grid.Row="1"/>
+                <TextBlock Text="{Binding Profile.ProfileName}" 
+                           Style="{StaticResource SubHeadingDarkTextBlockStyle}"
+                           Grid.Row="0"/>
+
+                <TextBlock Text="Description" 
+                           Style="{StaticResource SubHeadingDarkTextBlockStyle}"
+                           Grid.Row="1"/>
+                
+                <Border Grid.Row="2" BorderThickness="1" Margin="1" BorderBrush="{StaticResource SoftBlack}" UseLayoutRounding="True">
+                    <TextBox HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch"
+                             Text="{Binding Profile.Description, Mode=TwoWay}"/>
+                </Border>
+
+            </Grid>
+
+            <ListBox ItemsSource="{Binding ProfileHostList, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource EditHostListBoxStyle}" Grid.Row="1"/>
             
         </Grid>
         
