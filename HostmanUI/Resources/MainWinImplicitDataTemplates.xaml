@@ -4,7 +4,9 @@
     
     <DataTemplate DataType="{x:Type Entites:Profile}">
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="{Binding ProfileName}" Style="{StaticResource SubHeadingDarkTextBlockStyle}"/>
+            <TextBlock Text="{Binding ProfileName}" Style="{StaticResource SubHeadingDarkTextBlockStyle}"
+                       Margin="6,0"
+                       Foreground="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}"/>
         </StackPanel>
     </DataTemplate>
     

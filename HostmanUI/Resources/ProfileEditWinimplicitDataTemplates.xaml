@@ -3,7 +3,8 @@
                     xmlns:Entities="clr-namespace:HostLists.Entities;assembly=HostLists">
     
     <DataTemplate DataType="{x:Type Entities:HostEntry}">
-        <TextBlock Text="{Binding DomainName}" Style="{StaticResource SubHeadingTextBlockStyle}"/>
+        <TextBlock Text="{Binding DomainName}" Style="{StaticResource SubHeadingTextBlockStyle}"
+                   Foreground="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}"/>
     </DataTemplate>
     
 </ResourceDictionary>

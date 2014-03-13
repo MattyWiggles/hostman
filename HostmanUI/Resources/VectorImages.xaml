@@ -38,4 +38,15 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
+    <DrawingBrush x:Key="DeleteIcon" Stretch="Uniform">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#FF000000" Geometry="F1 M 86.6361,47.5356L 96.5356,37.636L 99.364,37.636L 99.364,40.4645L 89.4645,50.364L 86.6361,50.364L 86.6361,47.5356 Z "/>
+                    <GeometryDrawing Brush="#FF000000" Geometry="F1 M 89.4645,37.636L 99.364,47.5355L 99.364,50.364L 96.5356,50.364L 86.6361,40.4645L 86.6361,37.636L 89.4645,37.636 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
 </ResourceDictionary>

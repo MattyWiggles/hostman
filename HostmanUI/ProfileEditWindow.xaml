@@ -1,7 +1,7 @@
 ﻿<Window x:Class="HostmanUI.ProfileEditWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Editing Profile" Height="300" Width="300"
+        Title="Editing Profile" Height="600" Width="450"
         DataContext="{Binding PEditViewModel, RelativeSource={RelativeSource Mode=Self}}">
     
     <Window.Resources>
@@ -14,8 +14,18 @@
 
     <Border BorderBrush="{StaticResource SoftBlack}"
             BorderThickness="8">
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-        <ListBox ItemsSource="{Binding ProfileHostList, UpdateSourceTrigger=PropertyChanged}"/>
+        <ListBox ItemsSource="{Binding ProfileHostList, UpdateSourceTrigger=PropertyChanged}"
+                 Style="{StaticResource EditHostListBoxStyle}" Grid.Row="1"/>
+            
+        </Grid>
         
     </Border>
 
