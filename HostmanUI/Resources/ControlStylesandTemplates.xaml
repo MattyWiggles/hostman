@@ -7,6 +7,7 @@
     
     <System:Double x:Key="TitleTextFontSize">18</System:Double>
     <System:Double x:Key="SubTitleTextFontSize">14</System:Double>
+    <System:Double x:Key="BodyTextSize">12</System:Double>
 
     <Style TargetType="TextBlock" x:Key="BaseTextBlockStyle">
         <Setter Property="Foreground" Value="White"/>
@@ -33,6 +34,14 @@
         <Setter Property="Foreground" Value="{StaticResource SoftBlack}"/>
         <Setter Property="FontSize" Value="{StaticResource SubTitleTextFontSize}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    
+    <Style TargetType="TextBox">
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="Foreground" Value="{StaticResource SoftBlack}"/>
+        <Setter Property="FontSize" Value="{StaticResource BodyTextSize}"/>
     </Style>
 
     <!-- Standard Button with a vector image as it's icon-->

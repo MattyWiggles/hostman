@@ -65,8 +65,8 @@
       <DependentUpon>ProfileEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Support\Command.cs" />
-    <Compile Include="ViewModels\MainWinControllerViewModel.cs" />
-    <Compile Include="ViewModels\ProfileEditWinControllerViewModel.cs" />
+    <Compile Include="ViewModels\MainWinViewModel.cs" />
+    <Compile Include="ViewModels\ProfileEditViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -22,7 +22,7 @@
         <Grid Background="{StaticResource Yellow01}">
             <Rectangle VerticalAlignment="Stretch" Width="20" HorizontalAlignment="Left" Fill="{StaticResource SoftBlack}"/>
             <Rectangle VerticalAlignment="Stretch" Width="15" HorizontalAlignment="Left" Margin="25,0,0,0" Fill="{StaticResource SoftBlack}"/>
-            <Rectangle VerticalAlignment="Stretch" Width="10" HorizontalAlignment="Left" Margin="45,0,0,0" Fill="{StaticResource SoftBlack}"/>
+            <Rectangle VerticalAlignment="Stretch" Width="7.5" HorizontalAlignment="Left" Margin="45,0,0,0" Fill="{StaticResource SoftBlack}"/>
             
             <Grid Margin="57.5,6,6,0">
                 <Grid.RowDefinitions>
@@ -33,33 +33,34 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" 
-                           Text="Hostman" FontSize="24"
-                           Grid.Row="0"/>
+                           Text="Hostman" FontSize="38"
+                           Grid.Row="0"
+                           Margin="-27.5,0,0,0"/>
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}" 
                            Text="Current Profiles"
                            Grid.Row="1"
-                           Margin="12,0,0,0"/>
+                           Margin="0,0,0,0"/>
 
                 <ListBox Style="{StaticResource ProfilesListBoxStyle}" 
                          ItemsSource="{Binding Profiles}" 
                          SelectedValue="{Binding SelectedProfile, Mode=TwoWay}"
+                         MouseDoubleClick="ProfileList_DoubleClicked"
                          Margin="0,0,0,0"
                          Grid.Row="2"/>
 
                 <StackPanel Orientation="Horizontal"
-                        Margin="0,0,0,0"
+                            Margin="0,0,0,0"
                             Grid.Row="3"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom">
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom">
 
-                    <Button Style="{StaticResource AddButtonStyle}">
-
-                    </Button>
+                    <Button Style="{StaticResource AddButtonStyle}"
+                            Command="{Binding AddNewProfileCommand}"/>
 
                     <Button Style="{StaticResource EditButtonStyle}" 
-                    Command="{Binding EditSelectedProfileCommand}"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Bottom"/>
+                            Command="{Binding EditSelectedProfileCommand}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"/>
 
                 </StackPanel>
 

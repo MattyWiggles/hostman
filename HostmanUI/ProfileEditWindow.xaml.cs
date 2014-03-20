@@ -26,9 +26,9 @@ namespace HostmanUI
         {
             InitializeComponent();
 
-            PEditViewModel = new ProfileEditWinControllerViewModel(profile);
+            PEditViewModel = new ProfileEditViewModel(profile);
         }
 
-        public ProfileEditWinControllerViewModel PEditViewModel { get; private set; }
+        public ProfileEditViewModel PEditViewModel { get; private set; }
     }
 }

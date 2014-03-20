@@ -9,10 +9,10 @@ using HostmanUI.Support;
 namespace HostmanUI.ViewModels
 {
     [ImplementPropertyChanged]
-    public class MainWinControllerViewModel
+    public class MainWinViewModel
     {
 
-        public MainWinControllerViewModel()
+        public MainWinViewModel()
         {
             _EditSelectedProfileCommand = new Command(e => EditSelectedProfileExecuted(), e => (SelectedProfile == null) ? false : true);
             _AddNewProfileCommand = new Command(e => AddNewProfileExecuted());
@@ -57,7 +57,20 @@ namespace HostmanUI.ViewModels
         void AddNewProfileExecuted()
         {
             //Create the new profile and if success, open the profile in a new window to edit
-            
+            var newProfile = new Profile()
+            {
+                ProfileName = "Empty Profile",
+                DateCreated = DateTime.Now,
+            };
+
+            if (HostLists.HostLists.AddNewProfile(newProfile))
+            {
+                if (newProfileWindow != null)
+                    newProfileWindow.Close();
+
+                newProfileWindow = new ProfileEditWindow(newProfile);
+                newProfileWindow.Show();
+            }
 
         }
 

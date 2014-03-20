@@ -9,12 +9,12 @@ using System.Text;
 namespace HostmanUI.ViewModels
 {
     [ImplementPropertyChanged]
-    public class ProfileEditWinControllerViewModel
+    public class ProfileEditViewModel
     {
 
         public Profile Profile { get; private set; }
 
-        public ProfileEditWinControllerViewModel(Profile profile)
+        public ProfileEditViewModel(Profile profile)
         {
             this.Profile = profile;
         }
