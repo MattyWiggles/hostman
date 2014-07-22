@@ -41,5 +41,15 @@ namespace HostmanUI
         }
 
     }
+
+    private void CloseButtonClicked(object sender, RoutedEventArgs e)
+    {
+        App.Current.Shutdown();
+    }
+
+    private void TitleBarLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        this.DragMove();
+    }
   }
 }
