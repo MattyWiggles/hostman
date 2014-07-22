@@ -1,55 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using HostmanUI.ViewModels;
 using PropertyChanged;
-using HostmanUI.ViewModels;
+using System.Windows;
+using System.Windows.Input;
 
 namespace HostmanUI
 {
-  /// <summary>
-  /// Interaction logic for MainWindow.xaml
-  /// </summary>
-  [ImplementPropertyChanged]
-  public partial class MainWindow : Window
-  {
-    public MainWindow()
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    [ImplementPropertyChanged]
+    public partial class MainWindow : Window
     {
-      InitializeComponent();
-    }
-
-    private void ProfileListDoubleClicked(object sender, MouseButtonEventArgs e)
-    {
-        if (this.DataContext is MainWinViewModel)
+        public MainWindow()
         {
-            var mainWindowVM = (MainWinViewModel)this.DataContext;
+            InitializeComponent();
+        }
 
-            if (mainWindowVM.EditSelectedProfileCommand.CanExecute(null))
+        private void ProfileListDoubleClicked(object sender, MouseButtonEventArgs e)
+        {
+            if (this.DataContext is MainWinViewModel)
             {
-                mainWindowVM.EditSelectedProfileCommand.Execute(null);
+                var mainWindowVM = (MainWinViewModel)this.DataContext;
+
+                if (mainWindowVM.EditSelectedProfileCommand.CanExecute(null))
+                {
+                    mainWindowVM.EditSelectedProfileCommand.Execute(null);
+                }
+
             }
 
         }
 
-    }
+        private void CloseButtonClicked(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
 
-    private void CloseButtonClicked(object sender, RoutedEventArgs e)
-    {
-        App.Current.Shutdown();
+        private void TitleBarLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
-
-    private void TitleBarLeftButtonDown(object sender, MouseButtonEventArgs e)
-    {
-        this.DragMove();
-    }
-  }
 }
