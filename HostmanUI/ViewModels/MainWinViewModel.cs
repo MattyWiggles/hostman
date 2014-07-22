@@ -5,6 +5,7 @@ using System.Text;
 using HostLists.Entities;
 using PropertyChanged;
 using HostmanUI.Support;
+using HostmanUI.Support.HostmanUI.Support;
 
 namespace HostmanUI.ViewModels
 {
@@ -14,8 +15,8 @@ namespace HostmanUI.ViewModels
 
         public MainWinViewModel()
         {
-            _EditSelectedProfileCommand = new Command(e => EditSelectedProfileExecuted(), e => (SelectedProfile == null) ? false : true);
-            _AddNewProfileCommand = new Command(e => AddNewProfileExecuted());
+            EditSelectedProfileCommand = new RelayCommand(EditSelectedProfileExecuted, () => (SelectedProfile == null) ? false : true);
+            AddNewProfileCommand = new RelayCommand(AddNewProfileExecuted);
         }
 
         public List<Profile> Profiles
@@ -23,15 +24,20 @@ namespace HostmanUI.ViewModels
             get { return HostLists.HostLists.GetAllProfiles(); }
         }
 
-        public Profile SelectedProfile { get; set; }
+        Profile _SelectedProfile;
+        public Profile SelectedProfile 
+        {
+            get { return _SelectedProfile; } 
+            set
+            {
+                _SelectedProfile = value;
+                EditSelectedProfileCommand.Refresh();
+            }
+        }
 
         #region Commands
 
-        Command _EditSelectedProfileCommand;
-        public Command EditSelectedProfileCommand
-        {
-            get { return _EditSelectedProfileCommand; }
-        }
+        public RelayCommand EditSelectedProfileCommand { get; private set; }
 
         ProfileEditWindow newProfileWindow;
 
@@ -47,12 +53,7 @@ namespace HostmanUI.ViewModels
 
         }
 
-        Command _AddNewProfileCommand;
-        public Command AddNewProfileCommand
-        {
-            get { return _AddNewProfileCommand; }
-        }
-
+        public RelayCommand AddNewProfileCommand { get; private set; }
 
         void AddNewProfileExecuted()
         {

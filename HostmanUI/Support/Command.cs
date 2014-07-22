@@ -1,76 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Input;
-
+﻿
 namespace HostmanUI.Support
 {
 
-    public class Command : ICommand
+    using System;
+    using System.Windows.Input;
+
+    namespace HostmanUI.Support
     {
-        protected Action<object> ExecuteAction;
-        private readonly Predicate<object> _canExecute;
 
-        public string Name { get; set; }
-
-        public Key Key { get; set; }
-
-        public ModifierKeys ModifierKeys { get; set; }
-
-        public Command(Action<object> executeAction)
-            : this(executeAction, null)
+        public class RelayCommand : ICommand
         {
-        }
+            Action<object> _execute;
+            Func<bool> _canExecute;
 
-        public event EventHandler CanExecuteChanged
-        {
-            add
+            Action _executeParamLess;
+
+            public RelayCommand(Action<object> executeAction)
+                : this(executeAction, null)
             {
-                if (_canExecute == null)
+            }
+
+            public RelayCommand(Action executeAction)
+                :this(executeAction, null)
+            {
+            }
+
+            public RelayCommand(Action execute, Func<bool> canExecute)
+            {
+                if (execute == null)
+                    throw new ArgumentNullException("execute");
+                _executeParamLess = execute;
+                _canExecute = canExecute;
+            }
+
+            public RelayCommand(Action<object> execute, Func<bool> canExecute)
+            {
+                if (execute == null)
+                    throw new ArgumentNullException("execute");
+                _execute = execute;
+                _canExecute = canExecute;
+            }
+
+            public bool CanExecute(object param)
+            {
+                return _canExecute == null ? true : _canExecute();
+            }
+
+            public void Execute(object param)
+            {
+                if (_executeParamLess != null)
+                    _executeParamLess();
+                else
+                    _execute(param);
+            }
+
+            public void Refresh()
+            {
+                RaiseCanExecuteChanged();
+            }
+
+            public event EventHandler CanExecuteChanged;
+
+            public void RaiseCanExecuteChanged()
+            {
+                var handler = CanExecuteChanged;
+                if (handler != null)
                 {
-                    return;
+                    handler(this, EventArgs.Empty);
                 }
-                CommandManager.RequerySuggested += value;
             }
-
-            remove
-            {
-                if (_canExecute == null)
-                {
-                    return;
-                }
-                CommandManager.RequerySuggested -= value;
-            }
-        }
-
-        protected Command()
-        {
-        }
-
-        public Command(Action<object> executeAction, Predicate<object> canExecute)
-        {
-            if (executeAction == null)
-            {
-                throw new ArgumentNullException("executeAction");
-            }
-            ExecuteAction = executeAction;
-            _canExecute = canExecute;
-        }
-
-        public bool CanExecute(object parameter)
-        {
-            return _canExecute == null || _canExecute(parameter);
-        }
-
-        public void Execute(object parameter)
-        {
-            ExecuteAction(parameter);
-        }
-
-        public Command Clone(Action<object> execute, Predicate<object> canExecute)
-        {
-            return new Command(execute, canExecute) { Key = Key, ModifierKeys = ModifierKeys, Name = Name };
         }
     }
+
 }

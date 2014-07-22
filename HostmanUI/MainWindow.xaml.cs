@@ -25,16 +25,21 @@ namespace HostmanUI
     public MainWindow()
     {
       InitializeComponent();
-      MWViewModel = new MainWinViewModel();
     }
 
-    public MainWinViewModel MWViewModel { get; private set; }
-
-    private void ProfileList_DoubleClicked(object sender, MouseButtonEventArgs e)
+    private void ProfileListDoubleClicked(object sender, MouseButtonEventArgs e)
     {
-        if (MWViewModel.EditSelectedProfileCommand.CanExecute(null))
-            MWViewModel.EditSelectedProfileCommand.Execute(null);
-    }
+        if (this.DataContext is MainWinViewModel)
+        {
+            var mainWindowVM = (MainWinViewModel)this.DataContext;
 
+            if (mainWindowVM.EditSelectedProfileCommand.CanExecute(null))
+            {
+                mainWindowVM.EditSelectedProfileCommand.Execute(null);
+            }
+
+        }
+
+    }
   }
 }
